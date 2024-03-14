@@ -13,9 +13,9 @@ namespace Bakery.db
 {
     public class MyDbContext : DbContext
     {
-        const string SQL_DATABASE_NAME = "BakeryDB";
+        const string SQL_DATABASE_NAME = "NewBakeryDB";
         const string USER_ID = "SA";
-        const string USER_PASSWORD = "BAKERYPASS";
+        const string USER_PASSWORD = "PASSWORD";
         const string HOST_ADDRESS = "localhost,1433";
 
         const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";

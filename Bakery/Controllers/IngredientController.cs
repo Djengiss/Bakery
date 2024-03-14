@@ -14,10 +14,10 @@ namespace Bakery.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetIngredients")]
-        public IEnumerable<Ingredients> Get()
-        {
+        //[HttpGet(Name = "GetIngredients")]
+        //public IEnumerable<Ingredients> Get()
+        //{
             
-        }
+        //}
     }
 }
