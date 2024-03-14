@@ -10,8 +10,7 @@ namespace Bakery.Models
         public int Start_time { get; set; }
         public int Target_end_time { get; set; }
         public int End_time { get; set; }
-        public int Amount { get; set;}
+        public int Amount { get; set; }
         public BakingGood BakingGood { get; set; }
-        }
     }
 }
