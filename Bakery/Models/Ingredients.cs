@@ -1,6 +1,6 @@
-namespace Bakery
+namespace Bakery.Models
 {
-    public class WeatherForecast
+    public class Ingredients
     {
         public DateOnly Date { get; set; }
 
