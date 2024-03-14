@@ -10,8 +10,8 @@ namespace Bakery.Models
         public int DaysOfValidity { get; set; }
         public string Name { get; set; }
 
-        public Packet? Packet { get; set; }
-        public Dictionary<Ingredients, int> Ingredients { get; set; }
+        public BakingGood_Packet? Packet { get; set; }
+        public List<Ingredient_BakingGood> Ingredeients { get; set; }
         public List<BakeryBatch> Batches { get; set; }
     }
 }
