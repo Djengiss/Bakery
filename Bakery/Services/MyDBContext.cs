@@ -13,9 +13,9 @@ namespace Bakery.db
 {
     public class MyDbContext : DbContext
     {
-        const string SQL_DATABASE_NAME = "LibraryDB";
-        const string CONN_STR = "Data Source=localhost,1433;Database=" + SQL_DATABASE_NAME + ";User ID=SA;Password=K4sp3rBB13.05;TrustServerCertificate=True";
-        const string CONN_STR_DBSYS = "Data Source=localhost,1433;User ID=SA;Password=K4sp3rBB13.05;TrustServerCertificate=True";
+        const string SQL_DATABASE_NAME = "BakeryDB";
+        const string CONN_STR = "Data Source=localhost,1433;Database=" + SQL_DATABASE_NAME + ";User ID=SA;Password=BAKERYPASS;TrustServerCertificate=True";
+        const string CONN_STR_DBSYS = "Data Source=localhost,1433;User ID=SA;Password=BAKERYPASS;TrustServerCertificate=True";
         internal DbSet<Address> Addresses { get; set; }
         internal DbSet<BakeryBatch> Bathces { get; set; }
         internal DbSet<BakingGood> BakingGoods { get; set; }
