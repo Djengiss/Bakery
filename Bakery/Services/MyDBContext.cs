@@ -16,9 +16,11 @@ namespace Bakery.db
         const string SQL_DATABASE_NAME = "BakeryDB";
         const string USER_ID = "SA";
         const string USER_PASSWORD = "BAKERYPASS";
-        const string HOST_ADDRESS = "localhoost,1433";
+        const string HOST_ADDRESS = "localhost,1433";
+
         const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
         const string CONN_STR_DBSYS = $"Data Source={HOST_ADDRESS};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
+
         internal DbSet<Address> Addresses { get; set; }
         internal DbSet<BakeryBatch> Bathces { get; set; }
         internal DbSet<BakingGood> BakingGoods { get; set; }
