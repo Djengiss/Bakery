@@ -6,5 +6,7 @@
         public string Recipe { get; set; }
         public int DaysOfValidity { get; set; }
         public string Name { get; set; }
+
+        public Dictionary<Ingredients, int> Ingredients { get; set; }
     }
 }
