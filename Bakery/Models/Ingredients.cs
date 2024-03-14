@@ -10,5 +10,6 @@ namespace Bakery.Models
         public int StockAmount { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
+        public Dictionary<BakingGood, int> BackingGood { get; set; }
     }
 }
