@@ -30,6 +30,15 @@ namespace Bakery.db
         internal DbSet<Packet> Packets { get; set; }
         internal DbSet<BakingGood_Packet> BakingGoodPackets { get; set; }
         internal DbSet<Ingredient_BakingGood> IngredientBakingGoods { get; set; }
+        // Composite key
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BakingGood_Packet>()
+                .HasKey(bp => new { bp.GoodsId, bp.PacketId });
+
+            modelBuilder.Entity<Ingredient_BakingGood>()
+                .HasKey(ib => new { ib.GoodsId, ib.IngredientId });
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options
