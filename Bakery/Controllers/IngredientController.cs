@@ -1,5 +1,6 @@
 using Bakery.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bakery.Controllers
 {
@@ -14,10 +15,10 @@ namespace Bakery.Controllers
             _logger = logger;
         }
 
-        //[HttpGet(Name = "GetIngredients")]
-        //public IEnumerable<Ingredients> Get()
-        //{
+        [HttpGet(Name = "GetIngredients")]
+        public IEnumerable<Ingredients> Get()
+        {
             
-        //}
+        }
     }
 }
