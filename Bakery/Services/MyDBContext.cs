@@ -13,13 +13,13 @@ namespace Bakery.db
 {
     public class MyDbContext : DbContext
     {
-        const string SQL_DATABASE_NAME = "NewBakeryDB";
-        const string USER_ID = "SA";
-        const string USER_PASSWORD = "PASSWORD";
-        const string HOST_ADDRESS = "localhost,1433";
+        private const string SQL_DATABASE_NAME = "NewBakeryDB";
+        private const string USER_ID = "SA";
+        private const string USER_PASSWORD = "PASSWORD";
+        private const string HOST_ADDRESS = "localhost,1433";
 
-        const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
-        const string CONN_STR_DBSYS = $"Data Source={HOST_ADDRESS};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
+        private const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
+        private const string CONN_STR_DBSYS = $"Data Source={HOST_ADDRESS};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
 
         internal DbSet<Address> Addresses { get; set; }
         internal DbSet<BakeryBatch> Bathces { get; set; }
@@ -28,6 +28,8 @@ namespace Bakery.db
         internal DbSet<Ingredients> Ingredients { get; set; }
         internal DbSet<Order> Orders { get; set; }
         internal DbSet<Packet> Packets { get; set; }
+        internal DbSet<BakingGood_Packet> BakingGoodPackets { get; set; }
+        internal DbSet<Ingredient_BakingGood> IngredientBakingGoods { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options
