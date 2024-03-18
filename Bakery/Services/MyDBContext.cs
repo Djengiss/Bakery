@@ -15,7 +15,7 @@ namespace Bakery.db
     {
         private const string SQL_DATABASE_NAME = "NewBakeryDB";
         private const string USER_ID = "SA";
-        private const string USER_PASSWORD = "Gollopism3";
+        private const string USER_PASSWORD = "PASSWORD";
         private const string HOST_ADDRESS = "localhost,1433";
 
         private const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
