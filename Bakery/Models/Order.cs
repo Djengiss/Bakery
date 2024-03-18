@@ -7,6 +7,6 @@ namespace Bakery.Models
         [Key]
         public int OrderID { get; set; }
         public List<Packet> Packets { get; set; }
-        public Address DeliveryAddress { get; set; }
+        public Address Address { get; set; }
     }
 }

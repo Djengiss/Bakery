@@ -4,18 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bakery.Models
 {
-    public class BakingGood_Packet
+    public class BakingGoodPacket
     {
-        //[Key]
-        //public int BakingGood_Packet_Id { get; set; }
-
-        [ForeignKey("GoodsId")]
-        public int GoodsId { get; set; }
-        //public BakingGood Bakinggood { get; set; }
+        [ForeignKey("GoodId")]
+        public int GoodId { get; set; }
 
         [ForeignKey("PacketId")]
         public int PacketId { get; set; }
-        //public Packet Packet { get; set; }
         public int Amount { get; set; }
     }
 }

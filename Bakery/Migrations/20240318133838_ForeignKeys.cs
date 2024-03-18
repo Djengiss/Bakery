@@ -12,54 +12,54 @@ namespace Bakery.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_BakingGood_Packet_BakingGoods_GoodsId",
-                table: "BakingGood_Packet");
+                table: "BakingGoodPacket");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_BakingGood_Packet_Packets_PacketId",
-                table: "BakingGood_Packet");
+                table: "BakingGoodPacket");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Ingredient_BakingGood_BakingGoods_GoodsId",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Ingredient_BakingGood_Ingredients_IngredientId",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Ingredient_BakingGood",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropIndex(
                 name: "IX_Ingredient_BakingGood_GoodsId",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropIndex(
                 name: "IX_Ingredient_BakingGood_IngredientId",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_BakingGood_Packet",
-                table: "BakingGood_Packet");
+                table: "BakingGoodPacket");
 
             migrationBuilder.DropIndex(
                 name: "IX_BakingGood_Packet_GoodsId",
-                table: "BakingGood_Packet");
+                table: "BakingGoodPacket");
 
             migrationBuilder.DropColumn(
                 name: "Ingredient_BakingGood_Id",
-                table: "Ingredient_BakingGood");
+                table: "BakingGoodIngredient");
 
             migrationBuilder.DropColumn(
                 name: "BakingGood_Packet_Id",
-                table: "BakingGood_Packet");
+                table: "BakingGoodPacket");
 
             migrationBuilder.RenameTable(
-                name: "Ingredient_BakingGood",
+                name: "BakingGoodIngredient",
                 newName: "IngredientBakingGoods");
 
             migrationBuilder.RenameTable(
-                name: "BakingGood_Packet",
+                name: "BakingGoodPacket",
                 newName: "BakingGoodPackets");
 
             migrationBuilder.RenameIndex(
@@ -225,20 +225,20 @@ namespace Bakery.Migrations
 
             migrationBuilder.RenameTable(
                 name: "IngredientBakingGoods",
-                newName: "Ingredient_BakingGood");
+                newName: "BakingGoodIngredient");
 
             migrationBuilder.RenameTable(
                 name: "BakingGoodPackets",
-                newName: "BakingGood_Packet");
+                newName: "BakingGoodPacket");
 
             migrationBuilder.RenameIndex(
                 name: "IX_BakingGoodPackets_PacketId",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 newName: "IX_BakingGood_Packet_PacketId");
 
             migrationBuilder.AddColumn<int>(
                 name: "Ingredient_BakingGood_Id",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 type: "int",
                 nullable: false,
                 defaultValue: 0)
@@ -246,7 +246,7 @@ namespace Bakery.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "BakingGood_Packet_Id",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 type: "int",
                 nullable: false,
                 defaultValue: 0)
@@ -254,33 +254,33 @@ namespace Bakery.Migrations
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Ingredient_BakingGood",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "Ingredient_BakingGood_Id");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_BakingGood_Packet",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 column: "BakingGood_Packet_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredient_BakingGood_GoodsId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "GoodsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredient_BakingGood_IngredientId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "IngredientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BakingGood_Packet_GoodsId",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 column: "GoodsId",
                 unique: true);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_BakingGood_Packet_BakingGoods_GoodsId",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 column: "GoodsId",
                 principalTable: "BakingGoods",
                 principalColumn: "GoodsId",
@@ -288,7 +288,7 @@ namespace Bakery.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_BakingGood_Packet_Packets_PacketId",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 column: "PacketId",
                 principalTable: "Packets",
                 principalColumn: "PacketId",
@@ -296,7 +296,7 @@ namespace Bakery.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Ingredient_BakingGood_BakingGoods_GoodsId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "GoodsId",
                 principalTable: "BakingGoods",
                 principalColumn: "GoodsId",
@@ -304,7 +304,7 @@ namespace Bakery.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Ingredient_BakingGood_Ingredients_IngredientId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "IngredientId",
                 principalTable: "Ingredients",
                 principalColumn: "IngredientId",
