@@ -40,7 +40,7 @@ namespace Bakery.Controllers
         [HttpPost("seed")]
         public IActionResult SeedDatabase()
         {
-            DBMethods.Seed(_context); // Call your static seed method here
+            DBMethods.Seed(_context); 
             return Ok("Database seeded successfully.");
         }
     }
