@@ -5,9 +5,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Bakery.Models;
+using Bakery.Services;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace Bakery.db
@@ -16,7 +18,7 @@ namespace Bakery.db
     {
         private const string SQL_DATABASE_NAME = "NewBakeryDB";
         private const string USER_ID = "SA";
-        private const string USER_PASSWORD = "<SquirrelPass@D00M>";
+        private const string USER_PASSWORD = "Gollopism3";
         private const string HOST_ADDRESS = "localhost,1433";
 
         private const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
@@ -65,5 +67,6 @@ namespace Bakery.db
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options
                 .UseSqlServer(CONN_STR);
+        
     }
 }

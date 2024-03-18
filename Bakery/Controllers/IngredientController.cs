@@ -1,5 +1,6 @@
 using Bakery.db;
 using Bakery.Models;
+using Bakery.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,5 +23,8 @@ namespace Bakery.Controllers
         {
             return _db.Ingredients.ToList();
         }
+
+        //[HttpPost(Name = "Seed")]
+        //public DBMethods.Seed()
     }
 }
