@@ -6,8 +6,8 @@ namespace Bakery.Models
     {
         [Key]
         public int Ingredient_BakingGoo_Id { get; set; }
-        public BakingGood Bakinggood { get; set; }
-        public Ingredients ingredient{ get; set; }
+        public int GoodsId { get; set; }
+        public int IngredientId { get; set; }
         public int Amount { get; set; }
     }
 
