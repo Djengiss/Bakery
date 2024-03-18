@@ -15,7 +15,7 @@ namespace Bakery.db
     {
         private const string SQL_DATABASE_NAME = "NewBakeryDB";
         private const string USER_ID = "SA";
-        private const string USER_PASSWORD = "PASSWORD";
+        private const string USER_PASSWORD = "<SquirrelPass@D00M>";
         private const string HOST_ADDRESS = "localhost,1433";
 
         private const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
@@ -36,9 +36,29 @@ namespace Bakery.db
         {
             modelBuilder.Entity<BakingGoodPacket>()
                 .HasKey(bp => new { bp.GoodId, bp.PacketId });
+            modelBuilder.Entity<BakingGoodPacket>()
+                .HasOne(bp => bp.BakingGood)
+                .WithMany(bg => bg.BakingGoodPackets)
+                .HasForeignKey(bp => bp.GoodId);
+
+            modelBuilder.Entity<BakingGoodPacket>()
+                .HasOne(bp => bp.Packet)
+                .WithMany(p => p.BakingGoodsPackets)
+                .HasForeignKey(bp => bp.PacketId);
+            ///////
 
             modelBuilder.Entity<BakingGoodIngredient>()
-                .HasKey(ib => new { ib.GoodId, ib.IngredientId });
+                .HasKey(bg => new { bg.GoodId, bg.IngredientId });
+
+            modelBuilder.Entity<BakingGoodIngredient>()
+                .HasOne(bg => bg.BakingGood)
+                .WithMany(g => g.BakingGoodIngredients)
+                .HasForeignKey(bg => bg.GoodId);
+
+            modelBuilder.Entity<BakingGoodIngredient>()
+                .HasOne(bg => bg.Ingredient)
+                .WithMany(i => i.BakingGoodIngredients)
+                .HasForeignKey(bg => bg.IngredientId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
