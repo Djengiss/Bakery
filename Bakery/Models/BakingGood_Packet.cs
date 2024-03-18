@@ -1,4 +1,6 @@
-﻿namespace Bakery.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Bakery.Models
 {
     public class BakingGood_Packet
     {
