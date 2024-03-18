@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bakery.Models;
 using Bakery.Services;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
