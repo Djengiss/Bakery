@@ -25,8 +25,6 @@ namespace Bakery.Services
             db.Ingredients.Add(new Ingredients() { Name = "Milk", Unit = "L", StockAmount = 10 });
             db.Ingredients.Add(new Ingredients() { Name = "Salt", Unit = "g", StockAmount = 500 });
 
-
-
             db.SaveChanges();
            
         }
