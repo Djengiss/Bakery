@@ -3,6 +3,7 @@ using Bakery.Models;
 using Bakery.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace Bakery.Controllers
 {
@@ -23,8 +24,24 @@ namespace Bakery.Controllers
         {
             return _db.Ingredients.ToList();
         }
+    }
 
-        //[HttpPost(Name = "Seed")]
-        //public DBMethods.Seed()
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SeedController : ControllerBase
+    {
+        private readonly MyDbContext _context;
+
+        public SeedController(MyDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost("seed")]
+        public IActionResult SeedDatabase()
+        {
+            DBMethods.Seed(_context); // Call your static seed method here
+            return Ok("Database seeded successfully.");
+        }
     }
 }
