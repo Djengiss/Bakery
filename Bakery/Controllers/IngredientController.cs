@@ -1,3 +1,4 @@
+using Bakery.db;
 using Bakery.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace Bakery.Controllers
     public class IngredientController : ControllerBase
     {
         private readonly ILogger<IngredientController> _logger;
+        private readonly MyDbContext _db;
 
         public IngredientController(ILogger<IngredientController> logger)
         {
@@ -18,7 +20,7 @@ namespace Bakery.Controllers
         [HttpGet(Name = "GetIngredients")]
         public IEnumerable<Ingredients> Get()
         {
-            
+            return _db.Ingredients.ToList();
         }
     }
 }
