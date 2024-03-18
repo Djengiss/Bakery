@@ -8,8 +8,8 @@ namespace Bakery.Models
         [Key]
         public int PacketId { get; set; }
         public int TrackId { get; set; }
-        public List<BakingGoodPacket> BackingGoods { get; set; }
-        public List<BakingGood> BakingGoods { get; set; }
+        public List<BakingGoodPacket> BakingGoodsPackets { get; set; }
+        //public List<BakingGood> BakingGoods { get; set; }
         public Order Order { get; set; }
     }
 }
