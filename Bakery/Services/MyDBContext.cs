@@ -28,8 +28,18 @@ namespace Bakery.db
         internal DbSet<Ingredients> Ingredients { get; set; }
         internal DbSet<Order> Orders { get; set; }
         internal DbSet<Packet> Packets { get; set; }
-        internal DbSet<BakingGood_Packet> BakingGoodPackets { get; set; }
-        internal DbSet<Ingredient_BakingGood> IngredientBakingGoods { get; set; }
+        internal DbSet<BakingGoodPacket> BakingGoodPackets { get; set; }
+        internal DbSet<BakingGoodIngredient> BakingGoodIngredients { get; set; }
+
+        // Composite key
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BakingGoodPacket>()
+                .HasKey(bp => new { bp.GoodId, bp.PacketId });
+
+            modelBuilder.Entity<BakingGoodIngredient>()
+                .HasKey(ib => new { ib.GoodId, ib.IngredientId });
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options

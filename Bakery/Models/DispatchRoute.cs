@@ -6,6 +6,6 @@ namespace Bakery.Models
     {
         [Key]
         public int DispatchId { get; set; }
-        public List<Address> AddressesOnRoute { get; set; }
+        public List<Address> Addresses { get; set; }
     }
 }

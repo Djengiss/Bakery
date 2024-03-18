@@ -7,9 +7,9 @@ namespace Bakery.Models
         [Key]
         public int BatchId { get; set; }
         public DateOnly Date { get; set; }
-        public int Start_time { get; set; }
-        public int Target_end_time { get; set; }
-        public int End_time { get; set; }
+        public int StartTime { get; set; }
+        public int TargetEndTime { get; set; }
+        public int EndTime { get; set; }
         public int Amount { get; set; }
         public BakingGood BakingGood { get; set; }
     }

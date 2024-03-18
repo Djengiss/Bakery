@@ -4,6 +4,7 @@ using Bakery.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bakery.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240318133838_ForeignKeys")]
+    partial class ForeignKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,13 +27,13 @@ namespace Bakery.Migrations
 
             modelBuilder.Entity("AddressDispatchRoute", b =>
                 {
-                    b.Property<int>("AddressesAddressId")
+                    b.Property<int>("AddressesOnRouteAddressId")
                         .HasColumnType("int");
 
                     b.Property<int>("DispatchRoutesDispatchId")
                         .HasColumnType("int");
 
-                    b.HasKey("AddressesAddressId", "DispatchRoutesDispatchId");
+                    b.HasKey("AddressesOnRouteAddressId", "DispatchRoutesDispatchId");
 
                     b.HasIndex("DispatchRoutesDispatchId");
 
@@ -72,35 +75,35 @@ namespace Bakery.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("BakingGoodGoodId")
+                    b.Property<int>("BakingGoodGoodsId")
                         .HasColumnType("int");
 
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<int>("EndTime")
+                    b.Property<int>("End_time")
                         .HasColumnType("int");
 
-                    b.Property<int>("StartTime")
+                    b.Property<int>("Start_time")
                         .HasColumnType("int");
 
-                    b.Property<int>("TargetEndTime")
+                    b.Property<int>("Target_end_time")
                         .HasColumnType("int");
 
                     b.HasKey("BatchId");
 
-                    b.HasIndex("BakingGoodGoodId");
+                    b.HasIndex("BakingGoodGoodsId");
 
                     b.ToTable("Bathces");
                 });
 
             modelBuilder.Entity("Bakery.Models.BakingGood", b =>
                 {
-                    b.Property<int>("GoodId")
+                    b.Property<int>("GoodsId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoodId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoodsId"));
 
                     b.Property<int>("DaysOfValidity")
                         .HasColumnType("int");
@@ -113,40 +116,14 @@ namespace Bakery.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("GoodId");
+                    b.HasKey("GoodsId");
 
                     b.ToTable("BakingGoods");
                 });
 
-            modelBuilder.Entity("Bakery.Models.BakingGoodIngredient", b =>
+            modelBuilder.Entity("Bakery.Models.BakingGood_Packet", b =>
                 {
-                    b.Property<int>("GoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BakingGoodGoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IngredientsIngredientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GoodId", "IngredientId");
-
-                    b.HasIndex("BakingGoodGoodId");
-
-                    b.HasIndex("IngredientsIngredientId");
-
-                    b.ToTable("IngredientBakingGoods");
-                });
-
-            modelBuilder.Entity("Bakery.Models.BakingGoodPacket", b =>
-                {
-                    b.Property<int>("GoodId")
+                    b.Property<int>("GoodsId")
                         .HasColumnType("int");
 
                     b.Property<int>("PacketId")
@@ -155,12 +132,12 @@ namespace Bakery.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BakingGoodGoodId")
+                    b.Property<int?>("BakingGoodGoodsId")
                         .HasColumnType("int");
 
-                    b.HasKey("GoodId", "PacketId");
+                    b.HasKey("GoodsId", "PacketId");
 
-                    b.HasIndex("BakingGoodGoodId");
+                    b.HasIndex("BakingGoodGoodsId");
 
                     b.HasIndex("PacketId");
 
@@ -178,6 +155,32 @@ namespace Bakery.Migrations
                     b.HasKey("DispatchId");
 
                     b.ToTable("Routes");
+                });
+
+            modelBuilder.Entity("Bakery.Models.Ingredient_BakingGood", b =>
+                {
+                    b.Property<int>("GoodsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BakingGoodGoodsId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IngredientsIngredientId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GoodsId", "IngredientId");
+
+                    b.HasIndex("BakingGoodGoodsId");
+
+                    b.HasIndex("IngredientsIngredientId");
+
+                    b.ToTable("IngredientBakingGoods");
                 });
 
             modelBuilder.Entity("Bakery.Models.Ingredients", b =>
@@ -212,12 +215,12 @@ namespace Bakery.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int>("DeliveryAddressAddressId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("DeliveryAddressAddressId");
 
                     b.ToTable("Orders");
                 });
@@ -243,30 +246,15 @@ namespace Bakery.Migrations
                     b.ToTable("Packets");
                 });
 
-            modelBuilder.Entity("BakingGoodIngredients", b =>
-                {
-                    b.Property<int>("BakingGoodsGoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IngredientsIngredientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BakingGoodsGoodId", "IngredientsIngredientId");
-
-                    b.HasIndex("IngredientsIngredientId");
-
-                    b.ToTable("BakingGoodIngredients");
-                });
-
             modelBuilder.Entity("BakingGoodPacket", b =>
                 {
-                    b.Property<int>("BakingGoodsGoodId")
+                    b.Property<int>("BakingGoodsGoodsId")
                         .HasColumnType("int");
 
                     b.Property<int>("PacketsPacketId")
                         .HasColumnType("int");
 
-                    b.HasKey("BakingGoodsGoodId", "PacketsPacketId");
+                    b.HasKey("BakingGoodsGoodsId", "PacketsPacketId");
 
                     b.HasIndex("PacketsPacketId");
 
@@ -277,7 +265,7 @@ namespace Bakery.Migrations
                 {
                     b.HasOne("Bakery.Models.Address", null)
                         .WithMany()
-                        .HasForeignKey("AddressesAddressId")
+                        .HasForeignKey("AddressesOnRouteAddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -292,46 +280,46 @@ namespace Bakery.Migrations
                 {
                     b.HasOne("Bakery.Models.BakingGood", "BakingGood")
                         .WithMany("Batches")
-                        .HasForeignKey("BakingGoodGoodId")
+                        .HasForeignKey("BakingGoodGoodsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BakingGood");
                 });
 
-            modelBuilder.Entity("Bakery.Models.BakingGoodIngredient", b =>
-                {
-                    b.HasOne("Bakery.Models.BakingGood", null)
-                        .WithMany("BakingGoodIngredients")
-                        .HasForeignKey("BakingGoodGoodId");
-
-                    b.HasOne("Bakery.Models.Ingredients", null)
-                        .WithMany("BakingGoodIngredients")
-                        .HasForeignKey("IngredientsIngredientId");
-                });
-
-            modelBuilder.Entity("Bakery.Models.BakingGoodPacket", b =>
+            modelBuilder.Entity("Bakery.Models.BakingGood_Packet", b =>
                 {
                     b.HasOne("Bakery.Models.BakingGood", null)
                         .WithMany("BakingGoodPackets")
-                        .HasForeignKey("BakingGoodGoodId");
+                        .HasForeignKey("BakingGoodGoodsId");
 
                     b.HasOne("Bakery.Models.Packet", null)
-                        .WithMany("BackingGoods")
+                        .WithMany("BackingGood")
                         .HasForeignKey("PacketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Bakery.Models.Ingredient_BakingGood", b =>
+                {
+                    b.HasOne("Bakery.Models.BakingGood", null)
+                        .WithMany("Ingredeients")
+                        .HasForeignKey("BakingGoodGoodsId");
+
+                    b.HasOne("Bakery.Models.Ingredients", null)
+                        .WithMany("BakingGood")
+                        .HasForeignKey("IngredientsIngredientId");
+                });
+
             modelBuilder.Entity("Bakery.Models.Order", b =>
                 {
-                    b.HasOne("Bakery.Models.Address", "Address")
+                    b.HasOne("Bakery.Models.Address", "DeliveryAddress")
                         .WithMany("Orders")
-                        .HasForeignKey("AddressId")
+                        .HasForeignKey("DeliveryAddressAddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Address");
+                    b.Navigation("DeliveryAddress");
                 });
 
             modelBuilder.Entity("Bakery.Models.Packet", b =>
@@ -345,26 +333,11 @@ namespace Bakery.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("BakingGoodIngredients", b =>
-                {
-                    b.HasOne("Bakery.Models.BakingGood", null)
-                        .WithMany()
-                        .HasForeignKey("BakingGoodsGoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bakery.Models.Ingredients", null)
-                        .WithMany()
-                        .HasForeignKey("IngredientsIngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BakingGoodPacket", b =>
                 {
                     b.HasOne("Bakery.Models.BakingGood", null)
                         .WithMany()
-                        .HasForeignKey("BakingGoodsGoodId")
+                        .HasForeignKey("BakingGoodsGoodsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -382,16 +355,16 @@ namespace Bakery.Migrations
 
             modelBuilder.Entity("Bakery.Models.BakingGood", b =>
                 {
-                    b.Navigation("BakingGoodIngredients");
-
                     b.Navigation("BakingGoodPackets");
 
                     b.Navigation("Batches");
+
+                    b.Navigation("Ingredeients");
                 });
 
             modelBuilder.Entity("Bakery.Models.Ingredients", b =>
                 {
-                    b.Navigation("BakingGoodIngredients");
+                    b.Navigation("BakingGood");
                 });
 
             modelBuilder.Entity("Bakery.Models.Order", b =>
@@ -401,7 +374,7 @@ namespace Bakery.Migrations
 
             modelBuilder.Entity("Bakery.Models.Packet", b =>
                 {
-                    b.Navigation("BackingGoods");
+                    b.Navigation("BackingGood");
                 });
 #pragma warning restore 612, 618
         }

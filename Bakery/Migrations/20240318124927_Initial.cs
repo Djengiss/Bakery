@@ -117,7 +117,7 @@ namespace Bakery.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BakingGood_Packet",
+                name: "BakingGoodPacket",
                 columns: table => new
                 {
                     BakingGood_Packet_Id = table.Column<int>(type: "int", nullable: false)
@@ -154,7 +154,7 @@ namespace Bakery.Migrations
                     table.ForeignKey(
                         name: "FK_BakingGoods_BakingGood_Packet_PacketBakingGood_Packet_Id",
                         column: x => x.PacketBakingGood_Packet_Id,
-                        principalTable: "BakingGood_Packet",
+                        principalTable: "BakingGoodPacket",
                         principalColumn: "BakingGood_Packet_Id");
                 });
 
@@ -183,7 +183,7 @@ namespace Bakery.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ingredient_BakingGood",
+                name: "BakingGoodIngredient",
                 columns: table => new
                 {
                     Ingredient_BakingGoo_Id = table.Column<int>(type: "int", nullable: false)
@@ -216,7 +216,7 @@ namespace Bakery.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_BakingGood_Packet_PacketId",
-                table: "BakingGood_Packet",
+                table: "BakingGoodPacket",
                 column: "PacketId");
 
             migrationBuilder.CreateIndex(
@@ -231,12 +231,12 @@ namespace Bakery.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredient_BakingGood_BakingGoodGoodsId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "BakingGoodGoodsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ingredient_BakingGood_IngredientsIngredientId",
-                table: "Ingredient_BakingGood",
+                table: "BakingGoodIngredient",
                 column: "IngredientsIngredientId");
 
             migrationBuilder.CreateIndex(
@@ -260,7 +260,7 @@ namespace Bakery.Migrations
                 name: "Bathces");
 
             migrationBuilder.DropTable(
-                name: "Ingredient_BakingGood");
+                name: "BakingGoodIngredient");
 
             migrationBuilder.DropTable(
                 name: "Routes");
@@ -272,7 +272,7 @@ namespace Bakery.Migrations
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
-                name: "BakingGood_Packet");
+                name: "BakingGoodPacket");
 
             migrationBuilder.DropTable(
                 name: "Packets");
