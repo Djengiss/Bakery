@@ -12,17 +12,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 
+
 namespace Bakery.db
 {
     public class MyDbContext : DbContext
     {
         private const string SQL_DATABASE_NAME = "NewBakeryDB";
         private const string USER_ID = "SA";
-        private const string USER_PASSWORD = "Gollopism3";
-        private const string HOST_ADDRESS = "localhost,1433";
+        private static readonly string USER_PASSWORD = File.ReadAllText("secrets.txt").Trim();
+        private static readonly string HOST_ADDRESS = "localhost,1433";
 
-        private const string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
-        private const string CONN_STR_DBSYS = $"Data Source={HOST_ADDRESS};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
+        private static readonly string CONN_STR = $"Data Source={HOST_ADDRESS};Database={SQL_DATABASE_NAME};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
+        private static readonly string CONN_STR_DBSYS = $"Data Source={HOST_ADDRESS};User ID={USER_ID};Password={USER_PASSWORD};TrustServerCertificate=True";
 
         internal DbSet<Address> Addresses { get; set; }
         internal DbSet<BakeryBatch> Bathces { get; set; }
