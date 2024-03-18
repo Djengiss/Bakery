@@ -29,7 +29,7 @@ namespace Bakery.db
         internal DbSet<Order> Orders { get; set; }
         internal DbSet<Packet> Packets { get; set; }
         internal DbSet<BakingGoodPacket> BakingGoodPackets { get; set; }
-        internal DbSet<BakingGoodIngredient> IngredientBakingGoods { get; set; }
+        internal DbSet<BakingGoodIngredient> BakingGoodIngredients { get; set; }
 
         // Composite key
         protected override void OnModelCreating(ModelBuilder modelBuilder)
