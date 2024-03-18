@@ -7,9 +7,11 @@ namespace Bakery.Models
     {
         [ForeignKey("GoodId")]
         public int GoodId { get; set; }
+        public BakingGood BakingGood { get; set; }
 
         [ForeignKey("IngredientId")]
         public int IngredientId { get; set; }
+        public Ingredients Ingredient { get; set; }
         public int Amount { get; set; }
     }
 }
