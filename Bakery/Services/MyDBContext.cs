@@ -38,27 +38,33 @@ namespace Bakery.db
         // Composite key
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //
             modelBuilder.Entity<BakingGoodPacket>()
                 .HasKey(bp => new { bp.GoodId, bp.PacketId });
+
+            //
             modelBuilder.Entity<BakingGoodPacket>()
                 .HasOne(bp => bp.BakingGood)
                 .WithMany(bg => bg.BakingGoodPackets)
                 .HasForeignKey(bp => bp.GoodId);
 
+            //
             modelBuilder.Entity<BakingGoodPacket>()
                 .HasOne(bp => bp.Packet)
                 .WithMany(p => p.BakingGoodsPackets)
                 .HasForeignKey(bp => bp.PacketId);
-            ///////
-
+            
+            //
             modelBuilder.Entity<BakingGoodIngredient>()
                 .HasKey(bg => new { bg.GoodId, bg.IngredientId });
 
+            //
             modelBuilder.Entity<BakingGoodIngredient>()
                 .HasOne(bg => bg.BakingGood)
                 .WithMany(g => g.BakingGoodIngredients)
                 .HasForeignKey(bg => bg.GoodId);
 
+            //
             modelBuilder.Entity<BakingGoodIngredient>()
                 .HasOne(bg => bg.Ingredient)
                 .WithMany(i => i.BakingGoodIngredients)
